@@ -33,6 +33,14 @@ JS = "/os.js?v=" + h("os.js")
 CROWD = "/crowd.js?v=" + h("crowd.js")
 FONT = "/fonts/Nunito-Variable.woff2"
 WORDMARK = (ROOT / "tools/art/wordmark.svg").read_text().strip()
+GITHUB = "https://github.com/Immortal-Protocols/lastbook"
+# A build-time snapshot: no visitor-side GitHub request or tracking.
+GITHUB_STATS = json.loads((ROOT / "data/github-stats.json").read_text())
+if GITHUB_STATS.get("repository") != "Immortal-Protocols/lastbook":
+    raise ValueError("GitHub stats must refer to Lastbook")
+GITHUB_STARS = GITHUB_STATS["stars"]
+if type(GITHUB_STARS) is not int or GITHUB_STARS < 0:
+    raise ValueError("GitHub stars must be a nonnegative integer")
 
 APPLE = ('<svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.7-4.1ZM13.9 5c.7-.9 1.2-2.1 1.1-3.3-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.2 1.2.1 2.3-.6 3-1.5Z"/></svg>')
 WINDOWS = ('<svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M2 4.3 10 3.2v7.7H2Zm9-1.2L22 1.5v9.4H11ZM2 12h8v7.8l-8-1.1Zm9 0h11v9.5l-11-1.5Z"/></svg>')
@@ -93,6 +101,8 @@ def bar(current, over=False):
     for href, label in NAV[1:]:
         cur = ' aria-current="page"' if href == current else ""
         links.append(f'<a href="{href}"{cur}>{label}</a>')
+    if over:
+        links.append(f'<a class="open-source-nav" href="{GITHUB}" target="_blank" rel="noopener">Open source <span aria-hidden="true">↗</span></a>')
     cur = ' aria-current="page"' if current == "/download/" else ""
     return f"""<header class="bar{' bar-over' if over else ''}">
   <div class="bar-in">
@@ -223,6 +233,15 @@ def home():
       <div class="dl-item dl-mac"><a class="btn" href="{MAC}">{APPLE}<span>Download for Mac</span></a><p class="cap">28.5 MB · Apple M1 or newer · macOS 14+</p></div>
       <div class="dl-item dl-win"><a class="btn-2" href="{WIN}">{WINDOWS}<span>Download for Windows</span></a><p class="cap">105 MB · Windows 10 or 11, 64-bit</p></div>
       <div class="dl-item dl-linux"><a class="btn-2" href="{LINUX}">{BOX}<span>Download for Linux</span></a><p class="cap">29.9 MB · Ubuntu 24.04 · Intel/AMD 64-bit</p></div>
+    </div>
+    <div class="hero-community">
+      <p>Open source. Built by the community.</p>
+      <a class="hero-github" href="{GITHUB}" target="_blank" rel="noopener" aria-label="Build with us on GitHub, {GITHUB_STARS:,} stars">
+        <img src="/img/github-mark.png" alt="" width="20" height="20">
+        <span class="hero-github-label">Build with us on GitHub</span>
+        <span class="hero-stars"><span aria-hidden="true">☆</span> {GITHUB_STARS:,}<span class="vh"> stars</span></span>
+        <span aria-hidden="true">↗</span>
+      </a>
     </div>
   </div>
 

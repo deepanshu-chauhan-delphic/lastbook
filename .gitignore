@@ -8,7 +8,6 @@ __pycache__/
 *.pyc
 .DS_Store
 .vercel/
-.env*
 *.env
 /web/home-area.json
 dist/
@@ -19,3 +18,5 @@ build/
 *.dmg
 *.exe
 *.zip
+config.bat
+node_modules

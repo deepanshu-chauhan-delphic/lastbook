@@ -103,7 +103,7 @@ p{margin:0 0 1em}
 /* ---------- home hero ----------
    --wm is the wordmark's width: by the window's width, and by its height too,
    so on a short laptop screen the buttons and the library line still fit. */
-.hero{--wm:max(240px,min(clamp(300px,33vw,470px),calc((100svh - 400px) * 1.32)));
+.hero{--wm:max(240px,min(clamp(300px,30vw,420px),calc((100svh - 500px) * 1.32)));
   position:relative;min-height:100vh;min-height:100svh;overflow:hidden;overflow:clip;
   display:flex;flex-direction:column;align-items:center;
   padding:calc(84px + var(--wm) * .2) 16px 14px;
@@ -114,7 +114,7 @@ p{margin:0 0 1em}
 .crowd{display:none}
 .js .crowd{display:block}
 .bubbles{position:absolute;inset:0;pointer-events:none;z-index:3}
-.centre{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;max-width:860px;margin:auto 0}
+.centre{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;max-width:1100px;margin:auto 0}
 .wm{margin:0;line-height:0}
 .wm-svg{display:block;width:var(--wm);height:auto;overflow:visible;animation:drop .5s cubic-bezier(.3,1.3,.5,1) both}
 @keyframes drop{from{opacity:0;transform:translateY(-26px) scale(.94) rotate(-2deg)}to{opacity:1;transform:none}}
@@ -127,6 +127,16 @@ p{margin:0 0 1em}
 .dl{display:flex;gap:22px;justify-content:center;align-items:flex-start;flex-wrap:wrap;margin:22px 0 0;animation:up .4s .15s ease both}
 .dl-item{display:flex;flex-direction:column;align-items:center;max-width:380px}
 .dl-item .cap{margin:9px 0 0;font:700 1.0625rem/1.35 var(--body);color:var(--ink);text-shadow:0 0 6px var(--paper),0 0 2px var(--paper);text-wrap:balance}
+.hero-community{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:26px;color:var(--ink);text-shadow:0 0 6px var(--paper),0 0 2px var(--paper)}
+.hero-community p{margin:0;font:900 1.0625rem/1.4 var(--body)}
+.hero-github{display:inline-flex;align-items:center;justify-content:center;gap:9px;max-width:100%;min-height:44px;padding:6px 0;background:none;font:800 .9375rem/1.35 var(--body)}
+.hero-github:hover{background:none}
+.hero-github:hover .hero-github-label{text-decoration:underline;text-underline-offset:4px}
+.hero-github img{width:20px;height:20px;flex:none}
+.hero-stars{display:inline-flex;align-items:center;gap:5px;border-left:1px solid var(--line-2);padding-left:10px;margin-left:2px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.hero-stars>span[aria-hidden]{font-size:1.25rem;line-height:1}
+.nav .open-source-nav{font-size:.9375rem}
+@media(min-width:760px){.dl .btn,.dl .btn-2{font-size:1rem;letter-spacing:.015em;padding-left:20px;padding-right:20px}}
 [data-os="win"] .dl-win{order:-1}
 [data-os="linux"] .dl-linux{order:-1}
 .then{margin:16px 0 0;font:700 1.0625rem/1.45 var(--body);color:var(--ink);text-shadow:0 0 6px var(--paper),0 0 2px var(--paper);animation:up .4s .2s ease both}
@@ -374,6 +384,12 @@ p{margin:0 0 1em}
   .then .sep{display:none}
   .then a.check{display:table;margin:2px auto -6px}
   .hero-foot{display:none}
+  .bar-over .nav{display:flex}
+  .bar-over .nav .open-source-nav{font-size:.8125rem;padding:8px 0}
+  .hero-community{margin-top:20px;gap:4px}
+  .hero-community p{font-size:1rem}
+  .hero-github{font-size:.875rem;gap:7px}
+  .hero-github img{width:18px;height:18px}
   .pause{right:10px;bottom:10px;min-height:36px;padding:4px 10px;font-size:.8125rem}
   .bub span{font-size:14px}
 
