@@ -16,8 +16,11 @@
   "filter",
   "tablets",
   "water heater",
+  "geyser",
   "rainwater",
   "well",
+  "borewell",
+  "tubewell",
   "thirsty",
   "storage",
   "earthquake",
@@ -144,7 +147,7 @@
   {
    "id": "inhome",
    "label": "Find water already inside the house",
-   "hint": "Water heater, pipes, ice",
+   "hint": "Water heater or geyser, pipes, ice",
    "read": [
     {
      "doc": "f7ff53bcaae9cc",
@@ -206,7 +209,7 @@
   {
    "id": "outside",
    "label": "Get water from rain, a stream, pool or well",
-   "hint": "No stored water left",
+   "hint": "No stored water left, borewell or tubewell",
    "read": [
     {
      "doc": "f7ff53bcaae9cc",

@@ -31,6 +31,7 @@
   "spine",
   "neck",
   "heat stroke",
+  "heatstroke",
   "heat exhaustion",
   "hypothermia",
   "frostbite",
@@ -39,6 +40,7 @@
   "epinephrine",
   "adrenaline",
   "diarrhea",
+  "loose motions",
   "vomiting",
   "dehydration",
   "rehydration",
@@ -53,6 +55,7 @@
   "999",
   "112",
   "111",
+  "108",
   "emergency",
   "poison",
   "swallowed",
@@ -354,7 +357,7 @@
   {
    "id": "diarrhea",
    "label": "Diarrhea, vomiting or dehydration",
-   "hint": "Stomach bug, bad water, baby or older person drying out",
+   "hint": "Stomach bug, loose motions, bad water, baby or older person drying out",
    "read": [
     {
      "doc": "med-8bd4770a63b99cc6",
